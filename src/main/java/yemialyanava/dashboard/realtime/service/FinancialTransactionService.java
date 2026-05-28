@@ -52,7 +52,7 @@ public class FinancialTransactionService {
     @Transactional
     public List<FinancialTransactionResponse> getAllTransactions() {
 
-        List<FinancialTransaction> transactions = repository.findAll();
+        List<FinancialTransaction> transactions = repository.findAllByOrderByCreatedAtDesc();
 
         if (transactions == null) {
             throw new RuntimeException("Transaction not found");

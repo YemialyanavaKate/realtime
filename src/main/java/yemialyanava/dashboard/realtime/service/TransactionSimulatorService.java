@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Random;
 import java.util.UUID;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class TransactionSimulatorService {
     private final TransactionWebSocketHandler transactionWebSocketHandler;
     private final Random random = new Random();
 
+    @Scheduled(fixedDelay = 5000)
     public void generateSimulateTransaction() {
         log.info("Generating simulated transaction");
 

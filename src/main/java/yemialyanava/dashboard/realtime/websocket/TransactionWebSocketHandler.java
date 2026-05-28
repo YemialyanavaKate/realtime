@@ -18,7 +18,6 @@ import yemialyanava.dashboard.realtime.dto.FinancialTransactionResponse;
 
 @Slf4j
 @Component
-// @RequiredArgsConstructor
 public class TransactionWebSocketHandler extends TextWebSocketHandler {
 
     private final ObjectMapper objectMapper = new ObjectMapper()

@@ -31,37 +31,37 @@ import yemialyanava.dashboard.realtime.enums.TransactionType;
 @AllArgsConstructor
 public class FinancialTransaction {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-@Column(nullable = false, unique = true)
-private UUID externalId;
+    @Column(nullable = false, unique = true)
+    private UUID externalId;
 
-@Column(nullable = false, precision = 19, scale = 2)
-private BigDecimal amount;
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal amount;
 
-@Enumerated(EnumType.STRING)
-@Column(nullable = false, length = 3)
-private Currency currency;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 3)
+    private Currency currency;
 
-@Enumerated(EnumType.STRING)
-@Column(nullable = false)
-private TransactionStatus status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TransactionStatus status;
 
-@Enumerated(EnumType.STRING)
-@Column(nullable = false)
-private TransactionType type;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TransactionType type;
 
-@Column(nullable = false)
-private LocalDateTime createdAt;
+    @Column(nullable = false)
+    private LocalDateTime createdAt;
 
-@Column(length = 500)
-private String description;
+    @Column(length = 500)
+    private String description;
 
-@PrePersist
+    @PrePersist
     public void prePersist() {
-        this.createdAt = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now(java.time.ZoneOffset.UTC);
 
         if (this.externalId == null) {
             this.externalId = UUID.randomUUID();

@@ -1,5 +1,6 @@
 package yemialyanava.dashboard.realtime.repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -12,4 +13,6 @@ import yemialyanava.dashboard.realtime.entity.FinancialTransaction;
 public interface FinancialTransactionRepository extends JpaRepository<FinancialTransaction, Long> {
 
     Optional<FinancialTransaction> findByExternalId(UUID externalId);
+
+    List<FinancialTransaction> findAllByOrderByCreatedAtDesc();
 }
